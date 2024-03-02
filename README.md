@@ -13,7 +13,7 @@ This software is open source software licensed under the GNU GPLv2. In addition,
 
 1. Copy the plug-in file into directory:
 
-    - First, download the plug-in file (.jar) from [here](https://github.com/ychoi-kr/omegat-plugin-deepl-api-free-translate/releases).
+    - First, download the plug-in file (.jar) from [here](https://github.com/ychoi-kr/omegat-plugin-deepl-api-free/releases).
    
     - Windows: Copy the downloaded plug-in file into %SystemDrive%%ProgramFiles%\OmegaT\plugins directory.
     - macOS: Copy the downloaded plug-in file into /Applications/OmegaT.app/Contents/Java/plugins directory.
