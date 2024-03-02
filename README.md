@@ -36,4 +36,4 @@ This software is open source software licensed under the GNU GPLv2. In addition,
     -Ddeepl-api-free.api.key=YOURAPIKEY
     ```
    
-3. Open OmegaT Application. From Options > Machine Translation, select DeepL API Free Translate.
+3. Open OmegaT Application. From Options > Machine Translation, select DeepL API Free.
