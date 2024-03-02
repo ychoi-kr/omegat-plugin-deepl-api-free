@@ -8,7 +8,7 @@ import org.omegat.util.HttpConnectionUtils;
 import org.omegat.util.Language;
 import org.json.*;
 
-public class DeepLAPIFreeTranslate extends BaseTranslate {
+public class DeepLAPIFree extends BaseTranslate {
     private static final String API_KEY = System.getProperty("deepl-api-free.api.key");
     private static final String API_URL = "https://api-free.deepl.com/v2/translate";
 
@@ -17,6 +17,7 @@ public class DeepLAPIFreeTranslate extends BaseTranslate {
         return "allow_deep_api_free";
     }
 
+    @Override
     public String getName() {
         if (API_KEY == null) {
             return "DeepL API Free (API Key Required)";
