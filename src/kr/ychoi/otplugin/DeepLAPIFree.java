@@ -3,12 +3,12 @@ package kr.ychoi.otplugin;
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
-import org.omegat.core.machinetranslators.BaseTranslate;
+import org.omegat.core.machinetranslators.BaseCachedTranslate;
 import org.omegat.util.HttpConnectionUtils;
 import org.omegat.util.Language;
 import org.json.*;
 
-public class DeepLAPIFree extends BaseTranslate {
+public class DeepLAPIFree extends BaseCachedTranslate {
     private static final String API_KEY = System.getProperty("deepl-api-free.api.key");
     private static final String API_URL = "https://api-free.deepl.com/v2/translate";
 
@@ -31,13 +31,19 @@ public class DeepLAPIFree extends BaseTranslate {
         if (API_KEY == null) {
             return "API key not found";
         }
-
+        
+        String prev = getFromCache(sLang, tLang, text);
+        if (prev != null) {
+            return prev;
+        }
+        
         Map<String, String> params = new HashMap<>();
         params.put("text", text);
         params.put("target_lang", tLang.getLanguageCode().toUpperCase());
 
         Map<String, String> headers = new HashMap<>();
         headers.put("Authorization", "DeepL-Auth-Key " + API_KEY);
+        String result = "";
 
         try {
             // HttpConnectionUtils.post 메서드를 사용하여 form-urlencoded 데이터를 전송
@@ -46,7 +52,8 @@ public class DeepLAPIFree extends BaseTranslate {
 
             JSONArray translations = jsonResponse.getJSONArray("translations");
             if (translations.length() > 0) {
-                return translations.getJSONObject(0).getString("text").trim();
+                result = translations.getJSONObject(0).getString("text").trim();
+                return result;
             }
             return "Translation failed";
         } catch (Exception e) {
