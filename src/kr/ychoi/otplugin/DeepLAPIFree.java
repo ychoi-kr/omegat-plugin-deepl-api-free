@@ -32,9 +32,9 @@ public class DeepLAPIFree extends BaseCachedTranslate {
             return "API key not found";
         }
         
-        String prev = getFromCache(sLang, tLang, text);
-        if (prev != null) {
-            return prev;
+        String cachedResult = getCachedTranslation(sLang, tLang, text);
+        if (cachedResult != null) {
+            return cachedResult;
         }
         
         Map<String, String> params = new HashMap<>();
@@ -53,6 +53,7 @@ public class DeepLAPIFree extends BaseCachedTranslate {
             JSONArray translations = jsonResponse.getJSONArray("translations");
             if (translations.length() > 0) {
                 result = translations.getJSONObject(0).getString("text").trim();
+                putToCache(sLang, tLang, text, result);
                 return result;
             }
             return "Translation failed";
