@@ -1,8 +1,12 @@
 plugins {
     java
     distribution
-    maven
     id("org.omegat.gradle") version "1.5.11"
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 }
 
 repositories {

@@ -77,13 +77,12 @@ public class DeepLAPIFree extends BaseCachedTranslate {
 
         Map<String, String> headers = new HashMap<>();
         headers.put("Authorization", "DeepL-Auth-Key " + API_KEY);
+        headers.put("Content-Type", "application/x-www-form-urlencoded");
         String result = "";
 
         try {
-            // HttpConnectionUtils.post 메서드를 사용하여 form-urlencoded 데이터를 전송
-            String response = new String(HttpConnectionUtils.post(API_URL, params, headers).getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
-            JSONObject jsonResponse = new JSONObject(response);
-
+        	String response = HttpConnectionUtils.post(API_URL, params, headers);
+        	JSONObject jsonResponse = new JSONObject(response);
             JSONArray translations = jsonResponse.getJSONArray("translations");
             if (translations.length() > 0) {
                 result = translations.getJSONObject(0).getString("text").trim();

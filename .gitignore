@@ -1,3 +1,14 @@
-build
-.gradle
-.DS_Store
+# Gradle
+.gradle/
+build/
+
+# Eclipse / IDE
+.classpath
+.project
+.settings/
+
+# Java build output
+bin/
+
+# Distribution artifacts
+dist/
