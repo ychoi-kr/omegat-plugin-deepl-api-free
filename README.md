@@ -1,5 +1,9 @@
 # DeepL API Free Plug-in for OmegaT
 
+**This project is no longer being maintained.**  
+Development has moved to the official OmegaT DeepL connector project:  
+👉 [omegat-org/deepl-connector-plugin](https://github.com/omegat-org/deepl-connector-plugin)
+
 This plugin enables users to use DeepL API v2 with DeepL API Free plan in OmegaT CAT environment.
 
 ![](images/demo.png)
